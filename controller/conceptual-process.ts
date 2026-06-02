@@ -32,6 +32,7 @@ interface HeaderOption {
 
 export async function getConceptualProcessTableContent(
   filters: ConceptualProcessTableFilters,
+  isProcessUriIncluded = false,
 ) {
   const meta = await getPaginationForContent(filters);
   const tableContent = await getTableContent(filters);
@@ -39,7 +40,8 @@ export async function getConceptualProcessTableContent(
     {
       sortProperty: 'process',
       field: 'id',
-      label: 'uri',
+      label: 'Proces URI',
+      order: isProcessUriIncluded ? 6 : undefined,
     },
     {
       sortProperty: 'id',
@@ -100,7 +102,7 @@ export async function getConceptualProcessTableContent(
 export async function getConceptualProcessExport(
   filters: ConceptualProcessTableFilters,
 ) {
-  const tableContent = await getConceptualProcessTableContent(filters);
+  const tableContent = await getConceptualProcessTableContent(filters, true);
   const contentInOrder = tableContent.content.map((process) => {
     return Object.fromEntries(
       tableContent.headerLabels.map((header) => [
