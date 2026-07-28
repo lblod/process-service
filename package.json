@@ -1,7 +1,7 @@
 {
   "name": "process-service",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Service to handle backend business logic for process instances of OPH",
   "main": "app.js",
   "author": "redpencil.io",
